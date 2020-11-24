@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:layout_width="280dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:text=" Create Profile to Start your first ToDo List"
+        android:textColor="@color/white"
+        android:textSize="34dp" />
+
+    <EditText
+        android:layout_width="330dp"
+        android:layout_gravity="center"
+        android:layout_height="50dp"
+        android:paddingLeft="16dp"
+        android:layout_marginTop="50dp"
+        android:hint="Your Name"
+        android:textColorHint="@color/white"
+        android:background="@color/background"
+        android:textSize="20sp"
+        />
+
+    <EditText
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="16dp"
+        android:layout_gravity="center"
+        android:textColorHint="@color/white"
+        android:background="@color/background"
+        android:hint="Password"
+        android:textSize="20sp"
+        />
+
+    <EditText
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="16dp"
+        android:layout_gravity="center"
+        android:textColorHint="@color/white"
+        android:background="@color/background"
+        android:hint="Your email Address"
+        android:textSize="20sp"
+        />
+
+
+    <Button
+        android:background="@android:color/white"
+        android:textColor="@android:color/black"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"
+        android:text="Create your profile"
+
+
+        />
+
+    <TextView
+        android:layout_width="330dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:hint="Already have an account ?"
+        android:textColorHint="#AFAFAF"
+        />
+
+    <TextView
+        android:layout_width="330dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:text="Log in"
+        />
+
+
+</LinearLayout>
