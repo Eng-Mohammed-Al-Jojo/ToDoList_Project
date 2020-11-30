@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Project_lab</string>
+
+
+    <string name="save">Save</string>
+    <string name="new_task">New Task</string>
+    <string name="lists">Lists:</string>
+
 </resources>

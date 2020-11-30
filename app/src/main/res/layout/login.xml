@@ -5,85 +5,100 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background"
+    android:background="@drawable/background_color"
     tools:context=".Login"
     >
 
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="70dp"
-        android:gravity="center"
-        android:text="Welcome Back!"
-        android:textColor="@color/white"
-        android:textSize="34dp" />
-
-    <EditText
-        android:layout_width="330dp"
-        android:layout_gravity="center"
-        android:layout_height="50dp"
-        android:layout_marginTop="80dp"
-        android:hint="Your email Address"
-        android:textColorHint="@color/white"
-        android:background="@color/background"
-        android:textSize="20dp"
-        />
-
-    <EditText
-        android:layout_width="330dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:textColorHint="@color/white"
-        android:background="@color/background"
-        android:hint="Password"
-        android:textSize="20dp"
-        />
-    <TextView
-        android:layout_width="330dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        android:gravity="right"
-        android:textColor="@color/white"
-        android:textSize="18dp"
-        android:text="Forgot your password?"
-        />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="112dp"
-        android:layout_margin="20dp"
-        android:orientation="horizontal"
-        android:background="@color/background"
-        android:padding="10dp">
-
-        <ImageButton
-            android:layout_width="196dp"
-            android:layout_height="67dp"
-            android:textSize="20dp" />
-
+        android:layout_height="240dp"
+        android:orientation="vertical"
+        android:background="@drawable/heading">
         <TextView
-            android:layout_width="103dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Log In"
-            android:textSize="25dp" />
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text=" Log In"
+            android:textColor="@color/black"
+            android:textSize="34sp" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/ic_note"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            />
 
     </LinearLayout>
+
+    <EditText
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:hint="Username"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:textColorHint="@color/black"
+        android:drawableStart="@drawable/ic_user"
+        android:drawablePadding="10dp"
+        android:background="@drawable/et_background"
+        android:textSize="18sp" />
+
+    <EditText
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@drawable/et_background"
+        android:textColorHint="@color/black"
+        android:drawableStart="@drawable/ic_lock"
+        android:drawablePadding="10dp"
+        android:textSize="18sp" />
+
     <TextView
         android:layout_width="330dp"
         android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:gravity="right"
+        android:text="Forgot your password?"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_gravity="center"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:background="@drawable/button_background"
+        android:shadowColor="#C83782A3"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:text="Login"
         android:layout_marginTop="80dp"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
+
+    <TextView
+        android:layout_width="330dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="65dp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textColor="@color/white"
-        android:textSize="18dp"
-        android:hint="Do not have an account ?"
-        android:textColorHint="#AFAFAF"
+        android:textSize="18sp"
+        android:text="Do not have an account ?"
+        android:textColorHint="#E4DFDF"
         />
 
     <TextView
@@ -93,8 +108,20 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:textColor="@color/white"
-        android:textSize="18dp"
+        android:textSize="18sp"
+        android:id="@+id/To_register"
         android:text="Create your profile"
+        />
+    <TextView
+        android:layout_width="330dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:id="@+id/To_tasksList"
+        android:text="Go To Tasks List"
         />
 
 
