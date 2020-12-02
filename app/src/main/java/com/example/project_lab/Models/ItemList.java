@@ -3,12 +3,22 @@ package com.example.project_lab.Models;
 import java.util.ArrayList;
 
 public class ItemList {
+    int Id;
     String Title;
     ArrayList<Task> Tasks;
 
-    public ItemList(String title, ArrayList<Task> tasks) {
+    public ItemList(int id, String title, ArrayList<Task> tasks) {
+        Id = id;
         Title = title;
         Tasks = tasks;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
     }
 
     public String getTitle() {

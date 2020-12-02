@@ -89,6 +89,7 @@
 
 
         <TextView
+            android:id="@+id/tv_detailsDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
@@ -110,6 +111,7 @@
             android:background="@color/gray_white" />
 
         <TextView
+            android:id="@+id/tv_detailsDescription"
             android:layout_width="match_parent"
             android:layout_height="78dp"
             android:padding="8dp"
@@ -122,10 +124,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="235dp"
             >
 
-            <TextView
+            <Button
+                android:id="@+id/btn_delete_task"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Delete"

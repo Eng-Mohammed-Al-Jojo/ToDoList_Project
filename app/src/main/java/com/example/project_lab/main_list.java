@@ -47,7 +47,7 @@ public class main_list extends AppCompatActivity {
                 if (titleText.isEmpty()) {
                     et_create_list.setError("this can not be empty");
                 }else{
-                    list.add(new ItemList(titleText,new ArrayList<Task>()));
+                    list.add(new ItemList((list.size()+1),titleText,new ArrayList<Task>()));
                     et_create_list.getText().clear();
                     listRecyclerAdapter.notifyDataSetChanged();
                     //et_create_task.clearFocus();

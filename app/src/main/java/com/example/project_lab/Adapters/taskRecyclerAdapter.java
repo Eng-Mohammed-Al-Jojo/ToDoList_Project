@@ -59,16 +59,15 @@ public class taskRecyclerAdapter extends RecyclerView.Adapter<taskRecyclerAdapte
             }
         });
 
-/*
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, Details_Activity.class);
-                intent.putExtra("clickedPosition", position);
+                intent.putExtra("listId", data.getId());
+                intent.putExtra("taskPosition", position);
                 activity.startActivity(intent);
             }
         });
-*/
 
 
 

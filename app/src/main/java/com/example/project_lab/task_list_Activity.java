@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -24,7 +25,7 @@ public class task_list_Activity extends AppCompatActivity {
 
     RecyclerView taskRecycler;
     com.example.project_lab.Adapters.taskRecyclerAdapter taskRecyclerAdapter;
-    ItemList task;
+    ItemList listItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +33,12 @@ public class task_list_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_task_list_);
 
         int pos = getIntent().getIntExtra("clickedPosition",-1);
-        task = staticData.list.get(pos);
+        listItem = staticData.list.get(pos);
 
         taskRecycler = findViewById(R.id.taskRecycler);
         taskRecycler.setLayoutManager(new LinearLayoutManager(this));
 
-        taskRecyclerAdapter = new taskRecyclerAdapter(task_list_Activity.this, task);
+        taskRecyclerAdapter = new taskRecyclerAdapter(task_list_Activity.this, listItem);
         taskRecycler.setAdapter(taskRecyclerAdapter);
 
         EditText et_create_task = (EditText) findViewById(R.id.et_create_task);
@@ -48,12 +49,20 @@ public class task_list_Activity extends AppCompatActivity {
                 if (titleText.isEmpty()) {
                     et_create_task.setError("this can not be empty");
                 }else{
-                    task.getTasks().add(new Task(titleText,"","",false));
+                    listItem.getTasks().add(new Task(titleText,"","",false));
                     et_create_task.getText().clear();
                     //et_create_task.clearFocus();
                     taskRecyclerAdapter.notifyDataSetChanged();
                     Toast.makeText(task_list_Activity.this, "added successfully", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        Button btn_delete_list = (Button) findViewById(R.id.btn_delete_list);
+        btn_delete_list.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                staticData.list.remove(listItem);
+                task_list_Activity.this.finish();
             }
         });
 
