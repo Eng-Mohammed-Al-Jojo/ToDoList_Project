@@ -86,14 +86,14 @@
         android:shadowDy="0"
         android:shadowRadius="5"
         android:text="Login"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         android:textColor="@color/black"
         android:textSize="22sp" />
 
     <TextView
         android:layout_width="330dp"
         android:layout_height="25dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="5dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:textSize="18sp"

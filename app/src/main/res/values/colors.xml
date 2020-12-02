@@ -12,6 +12,9 @@
     <color name="start_blue"> #279CA6</color>
     <color name="end_w_blue"> #2ED7E6</color>
     <color name="gray"> #44535151</color>
+    <color name="gray_white"> #696969</color>
+    <color name="black_white"> #2B2A2A</color>
+    <color name="red">#D50D0D</color>
 
 
 

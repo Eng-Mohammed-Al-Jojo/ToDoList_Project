@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.os.Handler;
 
+import com.example.project_lab.Utils.staticData;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -16,9 +17,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        staticData.fillData();
+
         new Handler().postDelayed(new Runnable() {
-
-
             @Override
             public void run() {
                 // This method will be executed once the timer is over

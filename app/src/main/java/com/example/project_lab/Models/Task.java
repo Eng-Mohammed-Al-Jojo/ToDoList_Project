@@ -3,14 +3,14 @@ package com.example.project_lab.Models;
 import java.time.LocalDateTime;
 
 public class Task {
-    String Title;
-    LocalDateTime CeateDate;
-    String Description;
+    private String Title;
+    private String Date;
+    private String Description;
     boolean isChecked;
 
-    public Task(String title, LocalDateTime ceateDate, String description, boolean isChecked) {
+    public Task(String title, String date, String description, boolean isChecked) {
         Title = title;
-        CeateDate = ceateDate;
+        Date = date;
         Description = description;
         this.isChecked = isChecked;
     }
@@ -23,12 +23,12 @@ public class Task {
         Title = title;
     }
 
-    public LocalDateTime getCeateDate() {
-        return CeateDate;
+    public String getDate() {
+        return Date;
     }
 
-    public void setCeateDate(LocalDateTime ceateDate) {
-        CeateDate = ceateDate;
+    public void setDate(String date) {
+        Date = date;
     }
 
     public String getDescription() {
