@@ -11,13 +11,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_marginTop="64dp"
-    android:padding="8dp"
+    android:layout_marginTop="32dp"
 >
 
     <TextView
         android:id="@+id/tasksText"
-        android:layout_weight="2"
+        android:layout_weight="4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
@@ -28,14 +27,14 @@
 
     <Button
         android:id="@+id/btn_delete_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:textStyle="normal"
-        android:layout_marginStart="8dp"
         android:gravity="center"
-        android:textColor="@color/red"
-        android:textSize="20sp"
+        android:layout_margin="4dp"
+        android:background="@drawable/small_button_delete"
+        android:textColor="@color/white"
+        android:textSize="16sp"
         android:text="Delete" />
 
 

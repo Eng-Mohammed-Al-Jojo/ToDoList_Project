@@ -3,6 +3,7 @@ package com.example.project_lab;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +41,17 @@ public class Details_Activity extends AppCompatActivity {
         tv_detailsDate.setText(task.getDate());
         tv_detailsDescription.setText(task.getDescription());
 
+
+        TextView go_to_Update = (TextView) findViewById(R.id.go_to_Update);
+        go_to_Update.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+       Intent intent = new Intent(Details_Activity.this, Edit_Details_Activity.class);
+        startActivity(intent);
+            }
+        });
+
+
         Button btn_delete_task = (Button) findViewById(R.id.btn_delete_task);
         btn_delete_task.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -47,6 +59,17 @@ public class Details_Activity extends AppCompatActivity {
                 Details_Activity.this.finish();
             }
         });
+
+/*
+
+        Button btn_back_to_details = (Button) findViewById(R.id.btn_back_to_details);
+        btn_back_to_details.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Details_Activity.this, task_list_Activity.class);
+                Details_Activity.this.finish();
+            }
+        });
+*/
 
     }
 }
