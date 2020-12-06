@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:textColor="@color/start_blue"
         android:textSize="32sp"
         android:text="@string/tasks" />
@@ -67,6 +67,9 @@
             android:hint="Create new task"
             android:textColor="@color/white"
             android:textSize="16sp"
+            android:singleLine="true"
+            android:inputType="text"
+            android:imeOptions="actionDone"
             android:textStyle="bold" />
 
 
@@ -75,6 +78,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/taskRecycler"
+        android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="8dp"

@@ -43,32 +43,35 @@ public class searchAdapter extends RecyclerView.Adapter<searchAdapter.searchItem
 
     @Override
     public void onBindViewHolder(@NonNull searchAdapter.searchItemViewHolder holder, int position) {
-        holder.tv_taskTitle.setText(data.get(position).getTaskTitle());
-        holder.tv_itemListTitle.setText(data.get(position).getItemListTitle());
+        searchTask search_task = data.get(position);
+        ItemList itemList = staticData.list.get(search_task.getItemListId()-1);
+        Task task = itemList.getTasks().get(search_task.getTaskId());
 
-//        holder.cb_taskChecked.setChecked(data.getTasks().get(position).isChecked());
-//        if(data.getTasks().get(position).isChecked()){
-//            holder.tv_taskTitle.setPaintFlags(holder.tv_taskTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-//        }
+        holder.tv_itemListTitle.setText(itemList.getTitle());
+        holder.tv_taskTitle.setText(task.getTitle());
+        holder.cb_taskChecked.setChecked(task.isChecked());
+        if(task.isChecked()){
+            holder.tv_taskTitle.setPaintFlags(holder.tv_taskTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        }
 
-//        holder.cb_taskChecked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                data.getTasks().get(position).setChecked(isChecked);
-//                if(isChecked){
-//                    holder.tv_taskTitle.setPaintFlags(holder.tv_taskTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-//                } else {
-//                    holder.tv_taskTitle.setPaintFlags(holder.tv_taskTitle.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-//                }
-//            }
-//        });
+        holder.cb_taskChecked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                task.setChecked(isChecked);
+                if(isChecked){
+                    holder.tv_taskTitle.setPaintFlags(holder.tv_taskTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                } else {
+                    holder.tv_taskTitle.setPaintFlags(holder.tv_taskTitle.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+                }
+            }
+        });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, Details_Activity.class);
                 intent.putExtra("listId", data.get(position).getItemListId());
-                intent.putExtra("taskPosition", data.get(position).getTaskId());
+                intent.putExtra("taskPosition",data.get(position).getTaskId());
                 activity.startActivity(intent);
             }
         });

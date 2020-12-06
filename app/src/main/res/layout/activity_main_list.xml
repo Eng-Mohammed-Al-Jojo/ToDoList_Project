@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/ic_baseline_search_24"
         android:padding="16dp"
+        android:layout_marginTop="5dp"
         android:layout_marginStart="2dp"
         android:layout_weight="0"
         android:scaleX="1"
@@ -28,13 +29,17 @@
 
     <EditText
         android:id="@+id/et_searchTask"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_weight="3"
-        android:layout_marginStart="10dp"
+        android:padding="8dp"
+        android:layout_marginStart="4dp"
         android:gravity="center"
         android:hint="Search here"
-        android:textSize="16sp"
+        android:textSize="18sp"
+        android:singleLine="true"
+        android:inputType="text"
+        android:imeOptions="actionSearch"
         android:textColorHint="@color/hint_color"
         android:background="@drawable/et_background_no_color"
          />
@@ -47,12 +52,13 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:textColor="@color/start_blue"
         android:textSize="32sp"
         android:text="@string/lists" />
 
     <LinearLayout
+        android:id="@+id/create_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -78,6 +84,9 @@
             android:hint="Create new hint"
             android:textColor="@color/white"
             android:textSize="16sp"
+            android:singleLine="true"
+            android:inputType="text"
+            android:imeOptions="actionDone"
             android:textStyle="bold" />
 
 
@@ -86,6 +95,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listRecycler"
+        android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"

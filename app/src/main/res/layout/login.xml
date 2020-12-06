@@ -42,8 +42,8 @@
         android:layout_marginTop="60dp"
         android:hint="Username"
         android:inputType="textEmailAddress"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:textColorHint="@color/black"
         android:drawableStart="@drawable/ic_user"
         android:drawablePadding="10dp"
@@ -86,7 +86,7 @@
         android:shadowDy="0"
         android:shadowRadius="5"
         android:text="Login"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="100dp"
         android:textColor="@color/black"
         android:textSize="22sp" />
 

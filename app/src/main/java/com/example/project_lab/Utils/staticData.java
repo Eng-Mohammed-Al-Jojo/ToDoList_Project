@@ -31,14 +31,17 @@ public class staticData {
         list.add(new ItemList(5,"Meeting",new ArrayList<Task>()));
     }
 
+
+
+
     public static ArrayList<searchTask> searchTask(String searchText) {
         ArrayList<searchTask> result = new ArrayList<searchTask>();
         for (int i = 0; i < list.size(); i++) {
             ItemList listItem = list.get(i);
             for (int j = 0; j < listItem.getTasks().size(); j++) {
                 Task task = list.get(i).getTasks().get(j);
-                if (task.getTitle().contains(searchText)){
-                    result.add(new searchTask(listItem.getTitle(),task.getTitle(),i,j));
+                if (task.getTitle().toLowerCase().contains(searchText.toLowerCase())){
+                    result.add(new searchTask(listItem.getId(),j));
                 }
             }
         }
