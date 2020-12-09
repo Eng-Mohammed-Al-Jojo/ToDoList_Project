@@ -36,21 +36,24 @@
     </LinearLayout>
 
     <EditText
+        android:id="@+id/login_email"
         android:layout_width="330dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="60dp"
-        android:hint="Username"
+        android:hint="Email"
         android:inputType="textEmailAddress"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:textColorHint="@color/black"
-        android:drawableStart="@drawable/ic_user"
+        android:textColor="@color/black"
+        android:drawableStart="@drawable/ic_email"
         android:drawablePadding="10dp"
         android:background="@drawable/et_background"
         android:textSize="18sp" />
 
     <EditText
+        android:id="@+id/login_password"
         android:layout_width="330dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
@@ -61,6 +64,7 @@
         android:paddingRight="10dp"
         android:background="@drawable/et_background"
         android:textColorHint="@color/black"
+        android:textColor="@color/black"
         android:drawableStart="@drawable/ic_lock"
         android:drawablePadding="10dp"
         android:textSize="18sp" />

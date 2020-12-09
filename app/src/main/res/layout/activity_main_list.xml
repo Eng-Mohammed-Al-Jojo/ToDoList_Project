@@ -11,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_marginTop="4dp"
+    android:layout_marginTop="16dp"
     android:padding="8dp"
 >
     <ImageButton
@@ -23,8 +23,8 @@
         android:layout_marginTop="5dp"
         android:layout_marginStart="2dp"
         android:layout_weight="0"
-        android:scaleX="1"
-        android:scaleY="1"
+        android:scaleX="1.1"
+        android:scaleY="1.1"
         />
 
     <EditText
@@ -51,8 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
+        android:padding="16dp"
         android:textColor="@color/start_blue"
         android:textSize="32sp"
         android:text="@string/lists" />
@@ -72,6 +71,8 @@
             android:background="@drawable/ic_baseline_add_24"
             android:layout_margin="4dp"
             android:layout_marginTop="16dp"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
 
             />
         <EditText
