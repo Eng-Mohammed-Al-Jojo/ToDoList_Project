@@ -3,12 +3,14 @@ package com.example.project_lab;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Register extends AppCompatActivity {
 
+    private EditText RegisterName,RegisterEmail,RegisterPassword;
     TextView To_login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

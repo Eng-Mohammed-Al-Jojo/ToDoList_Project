@@ -19,8 +19,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.project_lab.Adapters.listRecyclerAdapter;
 import com.example.project_lab.Adapters.listRecyclerAdapter;
 import com.example.project_lab.Adapters.searchAdapter;
 import com.example.project_lab.Models.ItemList;
