@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Handler;
 
 import com.example.project_lab.Utils.staticData;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -17,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        staticData.fillData();
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-        }, 5000);
+        }, 3000);
 
     }
 

@@ -39,13 +39,13 @@ public class listRecyclerAdapter extends RecyclerView.Adapter<listRecyclerAdapte
     @Override
     public void onBindViewHolder(@NonNull listRecyclerAdapter.ItemListViewHolder holder, int position) {
         holder.tv_itemListTitle.setText(data.get(position).getTitle());
-        holder.tv_itemListCount.setText(data.get(position).getTasks().size() + " Tasks");
+        holder.tv_itemListCount.setText(data.get(position).getNumOfTasks()+" Tasks");
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, task_list_Activity.class);
-                intent.putExtra("clickedPosition", position);
+                intent.putExtra("clickedId", data.get(position).getId());
                 activity.startActivity(intent);
             }
         });

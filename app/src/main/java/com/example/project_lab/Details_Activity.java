@@ -1,5 +1,6 @@
 package com.example.project_lab;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,53 +23,114 @@ import android.widget.Toast;
 import com.example.project_lab.Models.ItemList;
 import com.example.project_lab.Models.Task;
 import com.example.project_lab.Utils.staticData;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
 public class Details_Activity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
     TextView tv_Date;
-    Button button_Date;
+    Button button_Date,btn_back_to_taskList;
     int day, month, year, hour, minute;
     int myday, myMonth, myYear, myHour, myMinute;
+    String taskId;
+    TextView tv_detailsLabel, tv_detailsDate, go_to_Update, cancel_update;
+    Button btn_delete_task, btn_update_details;
+    EditText et_detailsTitle, et_detailsDescription;
+    String uid;
+    String itemList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_);
 
-        Button btn_delete_task = (Button) findViewById(R.id.btn_delete_task);
-        Button btn_update_details = (Button) findViewById(R.id.btn_update_details);
+        taskId = getIntent().getStringExtra("taskId");
+
+        btn_back_to_taskList =  findViewById(R.id.btn_back_to_taskList);
+        btn_delete_task =  findViewById(R.id.btn_delete_task);
+        btn_update_details =  findViewById(R.id.btn_update_details);
         btn_update_details.setVisibility(View.GONE);
         btn_delete_task.setVisibility(View.VISIBLE);
         button_Date = findViewById(R.id.calender_date);
         button_Date.setVisibility(View.GONE);
+        tv_detailsLabel = findViewById(R.id.tv_detailsLabel);
+        tv_detailsDate = findViewById(R.id.tv_detailsDate);
+        go_to_Update = findViewById(R.id.go_to_Update);
 
-        EditText et_detailsTitle = (EditText) findViewById(R.id.et_detailsTitle);
-        EditText et_detailsDescription = (EditText) findViewById(R.id.et_detailsDescription);
+        et_detailsTitle =  findViewById(R.id.et_detailsTitle);
+        et_detailsDescription =  findViewById(R.id.et_detailsDescription);
         et_detailsTitle.setEnabled(false);
         et_detailsDescription.setEnabled(false);
 
-
-        TextView cancel_update = (TextView) findViewById(R.id.cancel_update);
+        cancel_update =  findViewById(R.id.cancel_update);
         cancel_update.setVisibility(View.GONE);
+        tv_Date = findViewById(R.id.tv_detailsDate);
 
-        int listId = getIntent().getIntExtra("listId", -1);
-        int taskPosition = getIntent().getIntExtra("taskPosition", -1);
+        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        FirebaseDatabase.getInstance().getReference("users/"+uid+"/tasks/"+taskId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Task task = snapshot.getValue(Task.class);
+                updateUI(task,itemList);
+            }
 
-        ItemList listItem = staticData.list.get(listId - 1);
-        Task task = listItem.getTasks().get(taskPosition);
 
-        TextView tv_detailsLabel = (TextView) findViewById(R.id.tv_detailsLabel);
-        TextView tv_detailsDate = (TextView) findViewById(R.id.tv_detailsDate);
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+
+
+        btn_back_to_taskList.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        myYear = year;
+        myday = day;
+        myMonth = month;
+        Calendar c = Calendar.getInstance();
+        hour = c.get(Calendar.HOUR);
+        minute = c.get(Calendar.MINUTE);
+        TimePickerDialog timePickerDialog = new TimePickerDialog(Details_Activity.this, Details_Activity.this, hour, minute, DateFormat.is24HourFormat(this));
+        timePickerDialog.show();
+    }
+
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        myHour = hourOfDay;
+        myMinute = minute;
+        tv_Date.setText(myYear + "/" + myMonth + "/" + myday + "  " + myHour + " : " + myMinute);
+    }
+
+    private void updateUI(Task task, String itemList)  {
         et_detailsTitle.setText(task.getTitle());
-        tv_detailsLabel.setText(listItem.getTitle());
+        FirebaseDatabase.getInstance().getReference("users/"+uid+"/lists/"+task.getListId()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String category = snapshot.getValue(ItemList.class).getTitle();
+                tv_detailsLabel.setText(category);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+
         tv_detailsDate.setText(task.getDate());
         et_detailsDescription.setText(task.getDescription());
 
+
         Activity activity = this;
 
-        TextView go_to_Update = (TextView) findViewById(R.id.go_to_Update);
         go_to_Update.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 btn_delete_task.setVisibility(View.GONE);
@@ -90,7 +152,18 @@ public class Details_Activity extends AppCompatActivity implements DatePickerDia
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                listItem.getTasks().remove(task);
+                                FirebaseDatabase.getInstance().getReference("users/"+uid+"/tasks/"+taskId).removeValue();
+                                FirebaseDatabase.getInstance().getReference("users/"+uid+"/lists/"+task.getListId()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        ItemList itemList = snapshot.getValue(ItemList.class);
+                                        itemList.setNumOfTasks(itemList.getNumOfTasks()-1);
+                                        FirebaseDatabase.getInstance().getReference("users/"+uid+"/lists/"+task.getListId()).setValue(itemList);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {}
+                                });
                                 onBackPressed();
                             }
                         })
@@ -114,17 +187,11 @@ public class Details_Activity extends AppCompatActivity implements DatePickerDia
                 task.setTitle(newTitle);
                 task.setDate(newDate);
                 task.setDescription(newDescription);
+
+                FirebaseDatabase.getInstance().getReference("users/"+uid+"/tasks/"+taskId).setValue(task);
                 onBackPressed();
             }
         });
-
-        Button btn_back_to_taskList = (Button) findViewById(R.id.btn_back_to_taskList);
-        btn_back_to_taskList.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
 
         cancel_update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,21 +204,14 @@ public class Details_Activity extends AppCompatActivity implements DatePickerDia
                 go_to_Update.setVisibility(View.VISIBLE);
                 cancel_update.setVisibility(View.GONE);
 
-                tv_detailsLabel.setText(listItem.getTitle());
+                tv_detailsLabel.setText(task.getTitle());
                 et_detailsTitle.setText(task.getTitle());
                 tv_detailsDate.setText(task.getDate());
                 et_detailsDescription.setText(task.getDescription());
             }
         });
 
-
-
-
         /*     Date & Time Calender      */
-
-
-        tv_Date = findViewById(R.id.tv_detailsDate);
-
         button_Date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,25 +223,5 @@ public class Details_Activity extends AppCompatActivity implements DatePickerDia
                 datePickerDialog.show();
             }
         });
-    }
-
-    @Override
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        myYear = year;
-        myday = day;
-        myMonth = month;
-        Calendar c = Calendar.getInstance();
-        hour = c.get(Calendar.HOUR);
-        minute = c.get(Calendar.MINUTE);
-        TimePickerDialog timePickerDialog = new TimePickerDialog(Details_Activity.this, Details_Activity.this, hour, minute, DateFormat.is24HourFormat(this));
-        timePickerDialog.show();
-    }
-
-
-    @Override
-    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        myHour = hourOfDay;
-        myMinute = minute;
-        tv_Date.setText(myYear + "/" + myMonth + "/" + myday + "  " + myHour + " : " + myMinute);
     }
 }

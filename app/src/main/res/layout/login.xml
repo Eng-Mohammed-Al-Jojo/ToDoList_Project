@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,28 +11,34 @@
     >
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/heading"
         android:orientation="vertical"
-        android:background="@drawable/heading">
-        <TextView
-            android:layout_width="150dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:text=" Log In"
-            android:textColor="@color/black"
-            android:textSize="34sp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/ic_note"
             android:layout_gravity="center"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
-            />
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/ic_note" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text=" Log In"
+            android:textColor="@color/black"
+            android:textSize="34sp" />
 
     </LinearLayout>
 
@@ -40,93 +47,122 @@
         android:layout_width="330dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/et_background"
+        android:drawableStart="@drawable/ic_email"
+        android:drawablePadding="10dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:textColorHint="@color/black"
         android:textColor="@color/black"
-        android:drawableStart="@drawable/ic_email"
-        android:drawablePadding="10dp"
-        android:background="@drawable/et_background"
-        android:textSize="18sp" />
+        android:textColorHint="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <EditText
         android:id="@+id/login_password"
         android:layout_width="330dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/et_background"
+        android:drawableStart="@drawable/ic_lock"
+        android:drawablePadding="10dp"
         android:hint="Password"
         android:inputType="textPassword"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:background="@drawable/et_background"
-        android:textColorHint="@color/black"
         android:textColor="@color/black"
-        android:drawableStart="@drawable/ic_lock"
-        android:drawablePadding="10dp"
-        android:textSize="18sp" />
+        android:textColorHint="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_email" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="330dp"
         android:layout_height="25dp"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="12dp"
         android:gravity="right"
         android:text="Forgot your password?"
         android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_password" />
 
     <Button
         android:id="@+id/login_btn"
-        android:layout_gravity="center"
         android:layout_width="330dp"
         android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="52dp"
         android:background="@drawable/button_background"
         android:shadowColor="#C83782A3"
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
         android:text="Login"
-        android:layout_marginTop="100dp"
         android:textColor="@color/black"
-        android:textSize="22sp" />
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="330dp"
         android:layout_height="25dp"
-        android:layout_marginTop="70dp"
         android:layout_gravity="center"
+        android:layout_marginTop="64dp"
         android:gravity="center"
-        android:textSize="18sp"
         android:text="Do not have an account ?"
         android:textColorHint="#E4DFDF"
-        />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_btn" />
 
     <TextView
-        android:layout_width="330dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:textSize="18sp"
         android:id="@+id/To_register"
-        android:text="Create your profile"
-        />
-    <TextView
         android:layout_width="330dp"
         android:layout_height="25dp"
-        android:layout_marginTop="5dp"
         android:layout_gravity="center"
+        android:layout_marginTop="2dp"
         android:gravity="center"
+        android:text="Create your profile"
         android:textColor="@color/white"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+   <!-- <TextView
         android:id="@+id/To_tasksList"
+        android:layout_width="330dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:text="Go To Tasks List"
-        />
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/To_register"
+        app:layout_constraintVertical_bias="0.223" />-->
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

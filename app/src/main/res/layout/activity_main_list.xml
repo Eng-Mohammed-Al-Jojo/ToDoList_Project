@@ -45,16 +45,37 @@
          />
 
 </LinearLayout>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    >
     <TextView
         android:id="@+id/tasksText"
-        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:padding="16dp"
         android:textColor="@color/start_blue"
         android:textSize="32sp"
         android:text="@string/lists" />
+    <Button
+        android:id="@+id/Logout"
+        android:background="@drawable/small_button_delete"
+        android:layout_weight="0"
+        android:layout_gravity="center"
+        android:padding="2dp"
+        android:layout_margin="6dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:text="logut" />
+
+</LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/create_layout"

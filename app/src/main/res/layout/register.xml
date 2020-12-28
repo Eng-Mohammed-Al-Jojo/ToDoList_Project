@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,127 +9,155 @@
     android:background="@drawable/background_color"
     tools:context=".Register">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="240dp"
-    android:orientation="vertical"
-    android:background="@drawable/heading">
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text=" Sign Up"
-        android:textColor="@color/black"
-        android:textSize="34sp" />
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/ic_note"
 
-        />
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:background="@drawable/heading"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/RegisterName"
-        android:layout_width="330dp"
-        android:layout_gravity="center"
-        android:layout_height="50dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_marginTop="60dp"
-        android:hint="Your Name"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        android:drawableStart="@drawable/ic_user"
-        android:drawablePadding="10dp"
-        android:background="@drawable/et_background"
-        android:textSize="18sp"
-        />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/ic_note"
+
+            />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text=" Sign Up"
+            android:textColor="@color/black"
+            android:textSize="34sp" />
+
+    </LinearLayout>
+
+    <!--
+
+<EditText
+    android:id="@+id/RegisterName"
+    android:layout_width="330dp"
+    android:layout_gravity="center"
+    android:layout_height="50dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:layout_marginTop="60dp"
+    android:hint="Your Name"
+    android:inputType="textPersonName"
+    android:textColor="@color/black"
+    android:textColorHint="@color/black"
+    android:drawableStart="@drawable/ic_user"
+    android:drawablePadding="10dp"
+    android:background="@drawable/et_background"
+    android:textSize="18sp"
+    />
+-->
 
     <EditText
         android:id="@+id/RegisterEmail"
         android:layout_width="330dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         android:layout_gravity="center"
-        android:textColorHint="@color/black"
-        android:textColor="@color/black"
-        android:hint="Your email Address"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/et_background"
         android:drawableStart="@drawable/ic_email"
         android:drawablePadding="10dp"
-        android:background="@drawable/et_background"
+        android:hint="Your email Address"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="18sp"
-        />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <EditText
         android:id="@+id/RegisterPassword"
         android:layout_width="330dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         android:layout_gravity="center"
-        android:textColorHint="@color/black"
-        android:textColor="@color/black"
+        android:layout_marginTop="24dp"
         android:background="@drawable/et_background"
-        android:hint="Password"
         android:drawableStart="@drawable/ic_lock"
         android:drawablePadding="10dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="18sp"
-        />
-
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegisterEmail" />
 
     <Button
         android:id="@+id/Register_btn"
-        android:layout_gravity="center"
         android:layout_width="330dp"
         android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="64dp"
         android:background="@drawable/button_background"
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
         android:text="Register"
-        android:layout_marginTop="80dp"
         android:textColor="@color/black"
-        android:textSize="22sp" />
-
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegisterPassword" />
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="330dp"
         android:layout_height="25dp"
-        android:layout_marginTop="80dp"
         android:layout_gravity="center"
+        android:layout_marginTop="64dp"
         android:gravity="center"
-        android:textColor="@color/white"
-        android:textSize="18sp"
         android:hint="Already have an account ?"
+        android:textColor="@color/white"
         android:textColorHint="@color/hint_color"
-        />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Register_btn" />
 
     <TextView
         android:id="@+id/To_login"
         android:layout_width="330dp"
         android:layout_height="25dp"
-        android:layout_marginTop="5dp"
         android:layout_gravity="center"
+        android:layout_marginTop="2dp"
         android:gravity="center"
-        android:textColor="@color/white"
-        android:textSize="18sp"
         android:text="Log in"
+        android:textColor="@color/white"
 
 
-        />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

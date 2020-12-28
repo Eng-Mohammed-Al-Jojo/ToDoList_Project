@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "1045515068480",
-    "project_id": "todolist-lab2020",
-    "storage_bucket": "todolist-lab2020.appspot.com"
+    "project_number": "387458891631",
+    "project_id": "todoapplication-7d1ff",
+    "storage_bucket": "todoapplication-7d1ff.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1045515068480:android:08cb0773bd4563ee002ba5",
+        "mobilesdk_app_id": "1:387458891631:android:62ef90da8260a83019329a",
         "android_client_info": {
           "package_name": "com.example.project_lab"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1045515068480-qmfop1b25uctj3eai0kitqbu9ndthc4d.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.project_lab",
-            "certificate_hash": "82dcf33226975dbfba62f4ef253385833631d34c"
-          }
-        },
-        {
-          "client_id": "1045515068480-ks0rbiifl7smo2tv720fhq28m1sf8puj.apps.googleusercontent.com",
+          "client_id": "387458891631-i2vs7qav3qm54sn3540t97pktmkolv7i.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBzsUfa2xnMmUsdksheEF2Y7PRpBZ-RbIA"
+          "current_key": "AIzaSyATD6SNNYkwkWh_G-I18asrZn0HAengc4Y"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1045515068480-ks0rbiifl7smo2tv720fhq28m1sf8puj.apps.googleusercontent.com",
+              "client_id": "387458891631-i2vs7qav3qm54sn3540t97pktmkolv7i.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

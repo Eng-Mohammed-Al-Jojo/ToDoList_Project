@@ -3,21 +3,23 @@ package com.example.project_lab.Models;
 import java.util.ArrayList;
 
 public class ItemList {
-    int Id;
-    String Title;
-    ArrayList<Task> Tasks;
 
-    public ItemList(int id, String title, ArrayList<Task> tasks) {
-        Id = id;
-        Title = title;
-        Tasks = tasks;
+    String Id;
+    String Title;
+    int numOfTasks;
+
+    public ItemList(){}
+
+    public ItemList(String title, int numOfTasks) {
+        this.Title = title;
+        this.numOfTasks = numOfTasks;
     }
 
-    public int getId() {
+    public String getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         Id = id;
     }
 
@@ -29,11 +31,11 @@ public class ItemList {
         Title = title;
     }
 
-    public ArrayList<Task> getTasks() {
-        return Tasks;
+    public int getNumOfTasks() {
+        return numOfTasks;
     }
 
-    public void setTasks(ArrayList<Task> tasks) {
-        Tasks = tasks;
+    public void setNumOfTasks(int numOfTasks) {
+        this.numOfTasks = numOfTasks;
     }
 }

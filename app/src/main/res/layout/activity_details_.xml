@@ -149,7 +149,7 @@
         <EditText
             android:id="@+id/et_detailsDescription"
             android:layout_width="match_parent"
-            android:layout_height="420dp"
+            android:layout_height="320dp"
             android:gravity="top|start"
             android:padding="8dp"
             android:text="have to meet him have to meet him have to meet him have to meet him"

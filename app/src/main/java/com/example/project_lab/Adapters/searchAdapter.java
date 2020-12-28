@@ -19,15 +19,20 @@ import com.example.project_lab.Models.Task;
 import com.example.project_lab.Models.searchTask;
 import com.example.project_lab.R;
 import com.example.project_lab.Utils.staticData;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class searchAdapter extends RecyclerView.Adapter<searchAdapter.searchItemViewHolder> {
 
     Activity activity;
-    ArrayList<searchTask> data = new ArrayList<searchTask>();
+    ArrayList<Task> data = new ArrayList<>();
 
-    public searchAdapter(Activity activity, ArrayList<searchTask> data) {
+    public searchAdapter(Activity activity, ArrayList<Task> data) {
         this.activity = activity;
         this.data = data;
     }
@@ -43,21 +48,31 @@ public class searchAdapter extends RecyclerView.Adapter<searchAdapter.searchItem
 
     @Override
     public void onBindViewHolder(@NonNull searchAdapter.searchItemViewHolder holder, int position) {
-        searchTask search_task = data.get(position);
-        ItemList itemList = staticData.list.get(search_task.getItemListId()-1);
-        Task task = itemList.getTasks().get(search_task.getTaskId());
 
-        holder.tv_itemListTitle.setText(itemList.getTitle());
-        holder.tv_taskTitle.setText(task.getTitle());
-        holder.cb_taskChecked.setChecked(task.isChecked());
-        if(task.isChecked()){
+        Task searchTask = data.get(position);
+
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        FirebaseDatabase.getInstance().getReference("users/"+uid+"/lists/"+searchTask.getListId()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String category = snapshot.getValue(ItemList.class).getTitle();
+                holder.tv_itemListTitle.setText(category);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+
+
+        holder.tv_taskTitle.setText(searchTask.getTitle());
+        holder.cb_taskChecked.setChecked(searchTask.isChecked());
+        if(searchTask.isChecked()){
             holder.tv_taskTitle.setPaintFlags(holder.tv_taskTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
 
         holder.cb_taskChecked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                task.setChecked(isChecked);
+                searchTask.setChecked(isChecked);
                 if(isChecked){
                     holder.tv_taskTitle.setPaintFlags(holder.tv_taskTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                 } else {
@@ -70,8 +85,7 @@ public class searchAdapter extends RecyclerView.Adapter<searchAdapter.searchItem
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, Details_Activity.class);
-                intent.putExtra("listId", data.get(position).getItemListId());
-                intent.putExtra("taskPosition",data.get(position).getTaskId());
+                intent.putExtra("taskId", searchTask.getId());
                 activity.startActivity(intent);
             }
         });

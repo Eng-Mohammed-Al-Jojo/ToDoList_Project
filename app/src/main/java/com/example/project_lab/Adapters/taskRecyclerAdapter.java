@@ -16,6 +16,7 @@ import com.example.project_lab.Details_Activity;
 import com.example.project_lab.Models.ItemList;
 import com.example.project_lab.Models.Task;
 import com.example.project_lab.R;
+import com.example.project_lab.Utils.FirebaseConnection;
 import com.example.project_lab.task_list_Activity;
 
 import java.util.ArrayList;
@@ -23,9 +24,9 @@ import java.util.ArrayList;
 public class taskRecyclerAdapter extends RecyclerView.Adapter<taskRecyclerAdapter.ItemTaskViewHolder> {
 
     Activity activity;
-    ItemList data;
+    ArrayList<Task> data;
 
-    public taskRecyclerAdapter(Activity activity, ItemList data) {
+    public taskRecyclerAdapter(Activity activity, ArrayList<Task> data) {
         this.activity = activity;
         this.data = data;
     }
@@ -41,21 +42,23 @@ public class taskRecyclerAdapter extends RecyclerView.Adapter<taskRecyclerAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ItemTaskViewHolder holder, int position) {
-        holder.tv_taskTitle.setText(data.getTasks().get(position).getTitle());
-        holder.cb_taskChecked.setChecked(data.getTasks().get(position).isChecked());
-        if(data.getTasks().get(position).isChecked()){
+
+        holder.tv_taskTitle.setText(data.get(position).getTitle());
+        holder.cb_taskChecked.setChecked(data.get(position).isChecked());
+        if(data.get(position).isChecked()){
             holder.tv_taskTitle.setPaintFlags(holder.tv_taskTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
 
         holder.cb_taskChecked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                data.getTasks().get(position).setChecked(isChecked);
+                data.get(position).setChecked(isChecked);
                 if(isChecked){
                     holder.tv_taskTitle.setPaintFlags(holder.tv_taskTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                 } else {
                     holder.tv_taskTitle.setPaintFlags(holder.tv_taskTitle.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
                 }
+                new FirebaseConnection().updateTask(data.get(position));
             }
         });
 
@@ -63,19 +66,15 @@ public class taskRecyclerAdapter extends RecyclerView.Adapter<taskRecyclerAdapte
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, Details_Activity.class);
-                intent.putExtra("listId", data.getId());
-                intent.putExtra("taskPosition", position);
+                intent.putExtra("taskId", data.get(position).getId());
                 activity.startActivity(intent);
             }
         });
-
-
-
     }
 
     @Override
     public int getItemCount() {
-        return data.getTasks().size();
+        return data.size();
     }
 
     public static class ItemTaskViewHolder extends RecyclerView.ViewHolder {
